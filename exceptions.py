@@ -18,3 +18,16 @@ class UpgradeError(pyTD6Exception):
 class CoordinateError(pyTD6Exception):
     def __init__(self):
         super().__init__("Invalid coordinates.")
+
+class MonkeyPlaced(pyTD6Exception):
+    def __init__(self):
+        super().__init__("The monkey has already been placed.")
+
+class MonkeyNotPlaced(pyTD6Exception):
+    def __init__(self):
+        super().__init__("The monkey has not been placed.")
+
+
+class MonkeySold(pyTD6Exception):
+    def __init__(self):
+        super().__init__("The monkey has been sold.")

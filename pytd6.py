@@ -6,41 +6,21 @@ from exceptions import *
 user32 = ctypes.windll.user32
 user32.SetProcessDPIAware()
 
+# load json file with monkey information in it.
 with open("monkeys.json") as monkeys_json:
     monkeys = json.load(monkeys_json)
 
-initiated = False
 
+class monkey:
+    def __init__(self, monkey: str):
 
-class init:
-    def __init__(self, resolution: Tuple[int, int] = [1920, 1080]):
-
-        if resolution[0] / resolution[1] >= 16 / 9:
-            placeable_width = (41 / 48) * resolution[0]
-            self.placeable_area = (round(placeable_width), resolution[1])
-        else:
-            placeable_height = (8 / 9) * resolution[1]
-            self.placeable_area = (resolution[0], round(placeable_height))
-
-        self.check_if_btd6_running()
-
-    def check_if_btd6_running(self):
-        btd6_window = pygetwindow.getWindowsWithTitle("BloonsTD6")
-        if not btd6_window:
-            raise BloonsTD6NotOpen
-
-
-class monkey(init):
-    def __init__(self, monkey: str, upgrades: Tuple[int, int, int] = [0, 0, 0]):
-        if (type(upgrades) is not list) and (type(upgrades) is not tuple):
-            raise UpgradeError
-        if len(upgrades) != 3:
-            raise UpgradeError
-        upgrades = [int(upgrade) for upgrade in upgrades]
+        # initialize monkey's attributes.
+        self.sold = False
+        self.placed = False
         self.name = monkeys[monkey]["name"]
         self.description = monkeys[monkey]["description"]
         self.category = monkeys[monkey]["category"]
-        self.upgrades = upgrades
+        self.upgrades = [0, 0, 0]
 
     def place(self, coordinates: Tuple[int, int]):
 
@@ -49,6 +29,9 @@ class monkey(init):
             raise CoordinateError
         if len(coordinates) != 2:
             raise CoordinateError
+        # raise MonkeyPlaced if the monkey has already been placed.
+        if self.placed:
+            raise MonkeyPlaced
 
         self.hotkeys = {"monkeys": {"Dart Monkey": "q"}, "upgrades": [",", ".", "/"]}
 
@@ -56,10 +39,15 @@ class monkey(init):
         btd6_window = pygetwindow.getWindowsWithTitle("BloonsTD6")[0]
         btd6_window.activate()
 
-        # get previous mouse pos, move to new pos, enter monkey hotkey, place, move back to previous pos.
+        # get current mouse position
+        # move to the monkey's position
+        # send the hotkey for the monkey
+        # left click to place the monkey
+        # move back to previous position.
         # time.sleep required for the monkey to be placed in time.
         previous_position = mouse.get_position()
         mouse.move(coordinates[0], coordinates[1])
+        time.sleep(0.1)
         keyboard.send(self.hotkeys["monkeys"][self.name])
         time.sleep(0.1)
         mouse.click()
@@ -67,8 +55,11 @@ class monkey(init):
         mouse.move(previous_position[0], previous_position[1])
         time.sleep(0.1)
 
-        # remember the coordinates of the monkey.
+        # record the coordinates of the monkey.
         self.coordinates = coordinates
+
+        # record that the monkey has been placed.
+        self.placed = True
 
     def upgrade(self, upgrades: Tuple[int, int, int] = None):
 
@@ -81,15 +72,56 @@ class monkey(init):
             raise UpgradeError
         if len(upgrades) != 3:
             raise UpgradeError
+        # raise exceptions if the monkey hasn't been placed or has been already sold.
+        if not self.placed:
+            raise MonkeyNotPlaced
+        if self.sold:
+            raise MonkeySold
 
-        # get previous mouse pos, move to new pos, enter upgrade hotkey, place, move back to previous pos.
+        # get current mouse position
+        # move to the monkey's position
+        # send the hotkey for (current upgrade - previous upgrade)
+        # send escape to get out of upgrade menu
+        # move back to previous position
         previous_position = mouse.get_position()
         mouse.move(self.coordinates[0], self.coordinates[1])
+        time.sleep(0.1)
         mouse.click()
         time.sleep(0.1)
         for path in range(len(upgrades)):
-            for tier in range(upgrades[path]):
+            for tier in range(upgrades[path] - self.upgrades[path]):
                 keyboard.send(self.hotkeys["upgrades"][path])
                 time.sleep(0.1)
         keyboard.send("esc")
+        time.sleep(0.1)
+        mouse.move(previous_position[0], previous_position[1])
+        time.sleep(0.1)
+
+        # record the upgrades of the monkey.
+        self.upgrades = upgrades
+
+    def sell(self):
+
+        # raise exceptions if the monkey hasn't been placed or has been already sold.
+        if not self.placed:
+            raise MonkeyNotPlaced
+        if self.sold:
+            raise MonkeySold
+
+        # get current mouse position
+        # move to the monkey's position
+        # sell monkey
+        # move back to previous position.
+        previous_position = mouse.get_position()
+        mouse.move(self.coordinates[0], self.coordinates[1])
+        time.sleep(0.1)
+        mouse.click()
+        time.sleep(0.1)
+        keyboard.send("backspace")
+        time.sleep(0.1)
+        mouse.move(previous_position[0], previous_position[1])
+        time.sleep(0.1)
+
+        # record that the monkey has been sold.
+        self.sold = True
 
