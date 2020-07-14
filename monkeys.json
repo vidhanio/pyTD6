@@ -1,0 +1,91 @@
+{
+    "Dart Monkey": {
+        "name": "Dart Monkey",
+        "description": "Throws a single dart at nearby bloons. Short range and low pierce but cheap.",
+        "category": "Primary",
+        "price": 200,
+        "upgrades": [
+            [
+                {
+                    "name": "Sharp Shots",
+                    "description": "Can pop 1 extra Bloon per shot.",
+                    "price": 140
+                },
+                {
+                    "name": "Razor Sharp Shots",
+                    "description": "Can pop 2 more Bloons per shot.",
+                    "price": 220
+                },
+                {
+                    "name": "Spike-o-pult",
+                    "description": "Converts the Dart Monkey into a Spike-o-pult that hurls a large spiked ball instead of darts. Good range, but slower attack speed. Each ball can pop lots of Bloons.",
+                    "price": 300
+                },
+                {
+                    "name": "Juggernaut",
+                    "description": "Hurls a giant spiked ball that pops lead and excels at crushing Ceramic Bloons.",
+                    "price": 99999
+                },
+                {
+                    "name": "Ultra-Juggernaut",
+                    "description": "Gigantic spiked ball splits twice into 6 Juggernaut balls for even more destructive power.",
+                    "price": 1800
+                }
+            ],
+            [
+                {
+                    "name": "Quick Shots",
+                    "description": "Shoots 15% faster.",
+                    "price": 100
+                },
+                {
+                    "name": "Very Quick Shots",
+                    "description": "Shoots 33% faster!",
+                    "price": 190
+                },
+                {
+                    "name": "Triple Shot",
+                    "description": "Throws 3 darts at a time instead of 1.",
+                    "price": 400
+                },
+                {
+                    "name": "Super Monkey Fan Club",
+                    "description": "Super Monkey Fan Club ability: Converts up to 10 nearby Dart Monkeys including himself into Super Monkeys for 15 seconds.",
+                    "price": 8000
+                },
+                {
+                    "name": "Plasma Monkey Fan Club",
+                    "description": "Elite membership of this club grants the Dart Monkeys even more power!",
+                    "price": 50000
+                }
+            ],
+            [
+                {
+                    "name": "Long Range Darts",
+                    "description": "Makes the Dart Monkey shoot further than normal.",
+                    "price": 90
+                },
+                {
+                    "name": "Enhanced Eyesight",
+                    "description": "Shoots even further and can detect Camo Bloons.",
+                    "price": 200
+                },
+                {
+                    "name": "Crossbow",
+                    "description": "Uses a long range Crossbow that can pop 3 layers of Bloon for every hit.",
+                    "price": 625
+                },
+                {
+                    "name": "Sharp Shooter",
+                    "description": "Sharp Shooter does powerful Crit Shots every few seconds that do a lot more damage.",
+                    "price": 2000
+                },
+                {
+                    "name": "Crossbow Master",
+                    "description": "Crossbow Master shoots really fast and devastates most Bloon types with ease.",
+                    "price": 25000
+                }
+            ]
+        ]
+    }
+}
