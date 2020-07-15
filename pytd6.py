@@ -45,11 +45,9 @@ class monkey:
         btd6_window = pygetwindow.getWindowsWithTitle("BloonsTD6")[0]
         btd6_window.activate()
 
-        # get current mouse position
         # move to the monkey's position
         # send the hotkey for the monkey
         # left click to place the monkey
-        # move back to previous position.
         # time.sleep required for the monkey to be placed in time.
         previous_position = mouse.get_position()
         mouse.move(coordinates[0], coordinates[1])
@@ -57,8 +55,6 @@ class monkey:
         keyboard.send(hotkeys["Monkeys"][self.monkey_name])
         time.sleep(0.1)
         mouse.click()
-        time.sleep(0.1)
-        mouse.move(previous_position[0], previous_position[1])
         time.sleep(0.1)
 
         # record the coordinates of the monkey.
@@ -98,12 +94,9 @@ class monkey:
         if self.sold:
             raise MonkeySold
 
-        # get current mouse position
         # move to the monkey's position
         # send the hotkey for (current upgrade - previous upgrade)
         # send escape to get out of upgrade menu
-        # move back to previous position
-        previous_position = mouse.get_position()
         mouse.move(self.coordinates[0], self.coordinates[1])
         time.sleep(0.1)
         mouse.click()
@@ -114,8 +107,6 @@ class monkey:
                 time.sleep(0.1)
         if not skip_esc:
             keyboard.send("esc")
-        time.sleep(0.1)
-        mouse.move(previous_position[0], previous_position[1])
         time.sleep(0.1)
 
         # record the upgrades of the monkey.
@@ -132,18 +123,13 @@ class monkey:
         if self.sold:
             raise MonkeySold
 
-        # get current mouse position
         # move to the monkey's position
         # sell monkey
-        # move back to previous position.
-        previous_position = mouse.get_position()
         mouse.move(self.coordinates[0], self.coordinates[1])
         time.sleep(0.1)
         mouse.click()
         time.sleep(0.1)
         keyboard.send(hotkeys["Gameplay"]["Pause/Deselect"])
-        time.sleep(0.1)
-        mouse.move(previous_position[0], previous_position[1])
         time.sleep(0.1)
 
         # record that the monkey has been sold.
