@@ -13,5 +13,4 @@ dms[3].place([1424, 744])
 dms[4].place([1183, 107])
 
 for dm in dms:
-    dm.upgrade([0, 2, 5])
-
+    dm.upgrade([0, 2, 4])

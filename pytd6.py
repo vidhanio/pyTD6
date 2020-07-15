@@ -11,16 +11,19 @@ with open("monkeys.json") as monkeys_json:
     monkeys = json.load(monkeys_json)
 
 
+def price_round(x, base=5):
+    return base * round(x / base)
+
+
 class monkey:
     def __init__(self, monkey: str):
 
         # initialize monkey's attributes.
         self.sold = False
         self.placed = False
-        self.name = monkeys[monkey]["name"]
-        self.description = monkeys[monkey]["description"]
-        self.category = monkeys[monkey]["category"]
         self.upgrades = [0, 0, 0]
+        self.monkey_name = monkey
+        self.info(self.monkey_name)
 
     def place(self, coordinates: Tuple[int, int]):
 
@@ -51,7 +54,7 @@ class monkey:
         previous_position = mouse.get_position()
         mouse.move(coordinates[0], coordinates[1])
         time.sleep(0.1)
-        keyboard.send(self.hotkeys["monkeys"][self.name])
+        keyboard.send(self.hotkeys["monkeys"][self.monkey_name])
         time.sleep(0.1)
         mouse.click()
         time.sleep(0.1)
@@ -80,10 +83,15 @@ class monkey:
         if upgrades.count(0) == 0:
             raise UpgradeError
 
+        # raise UpgradeError there is a path above the 5th tier.
+        if max(upgrades) > 5:
+            raise UpgradeError
+
         # raise UpgradeError if there is more than one path at tier 3 or higher
         third_tier_upgrade_count = len([i for i in upgrades if i >= 3])
         if third_tier_upgrade_count > 1:
             raise UpgradeError
+
         # raise exceptions if the monkey hasn't been placed or has been already sold.
         if not self.placed:
             raise MonkeyNotPlaced
@@ -112,6 +120,9 @@ class monkey:
         # record the upgrades of the monkey.
         self.upgrades = upgrades
 
+        # update information about tower
+        self.info(self.monkey_name)
+
     def sell(self):
 
         # raise exceptions if the monkey hasn't been placed or has been already sold.
@@ -136,4 +147,57 @@ class monkey:
 
         # record that the monkey has been sold.
         self.sold = True
+
+    def info(self, monkey_name: str = None, upgrades: Tuple[int, int, int] = None):
+
+        # if no upgrade path is passed, use the one provided when the monkey was generated.
+        if upgrades == None:
+            upgrades = self.upgrades
+
+        # if no monkey name is passed, use the one provided when the monkey was generated.
+        if monkey_name == None:
+            monkey_name = self.monkey_name
+
+        main_tier = max(upgrades)
+        main_path = upgrades.index(main_tier)
+
+        self.monkey_name = monkey_name
+        self.monkey_description = monkeys[monkey_name]["description"]
+
+        self.monkey_price_medium = monkeys[monkey_name]["price"]
+        self.monkey_price_easy = price_round(0.85 * self.monkey_price_medium)
+        self.monkey_price_hard = price_round(1.08 * self.monkey_price_medium)
+        self.monkey_price_impoppable = price_round(1.2 * self.monkey_price_medium)
+
+        self.upgrade_name = None
+        self.upgrade_description = None
+
+        self.upgrade_price_medium = 0
+        self.upgrade_price_easy = 0
+        self.upgrade_price_hard = 0
+        self.upgrade_price_impoppable = 0
+
+        if upgrades != [0, 0, 0]:
+            self.upgrade_name = monkeys[monkey_name]["upgrades"][main_path][
+                main_tier - 1
+            ]["name"]
+            self.upgrade_description = monkeys[monkey_name]["upgrades"][main_path][
+                main_tier - 1
+            ]["description"]
+            self.upgrade_price_medium = monkeys[monkey_name]["upgrades"][main_path][
+                main_tier - 1
+            ]["price"]
+            self.upgrade_price_easy = price_round(0.85 * self.upgrade_price_medium)
+            self.upgrade_price_hard = price_round(1.08 * self.upgrade_price_medium)
+            self.upgrade_price_impoppable = price_round(1.2 * self.upgrade_price_medium)
+
+        self.total_price_medium = self.monkey_price_medium
+        for path in range(len(upgrades)):
+            for tier in range(upgrades[path]):
+                self.total_price_medium += monkeys[monkey_name]["upgrades"][path][tier][
+                    "price"
+                ]
+        self.total_price_easy = price_round(0.85 * self.total_price_medium)
+        self.total_price_hard = price_round(1.08 * self.total_price_medium)
+        self.total_price_impoppable = price_round(1.2 * self.total_price_medium)
 
