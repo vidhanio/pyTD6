@@ -10,6 +10,9 @@ user32.SetProcessDPIAware()
 with open("monkeys.json") as monkeys_json:
     monkeys = json.load(monkeys_json)
 
+with open("hotkeys.json") as hotkeys_json:
+    hotkeys = json.load(hotkeys_json)
+
 
 def price_round(x, base=5):
     return base * round(x / base)
@@ -23,7 +26,8 @@ class monkey:
         self.placed = False
         self.upgrades = [0, 0, 0]
         self.monkey_name = monkey
-        self.info(self.monkey_name)
+
+    # self.info(self.monkey_name)
 
     def place(self, coordinates: Tuple[int, int]):
 
@@ -35,11 +39,6 @@ class monkey:
         # raise MonkeyPlaced if the monkey has already been placed.
         if self.placed:
             raise MonkeyPlaced
-
-        self.hotkeys = {
-            "monkeys": {"Dart Monkey": "q"},
-            "upgrades": [",", ".", "?"],
-        }
 
         # activate Bloons TD 6 window.
         btd6_window = pygetwindow.getWindowsWithTitle("BloonsTD6")[0]
@@ -54,7 +53,7 @@ class monkey:
         previous_position = mouse.get_position()
         mouse.move(coordinates[0], coordinates[1])
         time.sleep(0.1)
-        keyboard.send(self.hotkeys["monkeys"][self.monkey_name])
+        keyboard.send(hotkeys["Monkeys"][self.monkey_name])
         time.sleep(0.1)
         mouse.click()
         time.sleep(0.1)
@@ -67,7 +66,7 @@ class monkey:
         # record that the monkey has been placed.
         self.placed = True
 
-    def upgrade(self, upgrades: Tuple[int, int, int] = None):
+    def upgrade(self, upgrades: Tuple[int, int, int] = None, skip_esc: bool = False):
 
         # if no upgrade path is passed, use the one provided when the monkey was generated.
         if upgrades is None:
@@ -110,9 +109,10 @@ class monkey:
         time.sleep(0.1)
         for path in range(len(upgrades)):
             for tier in range(upgrades[path] - self.upgrades[path]):
-                keyboard.send(self.hotkeys["upgrades"][path])
+                keyboard.send(hotkeys["Monkeys"]["Upgrades"][path])
                 time.sleep(0.1)
-        keyboard.send("esc")
+        if not skip_esc:
+            keyboard.send("esc")
         time.sleep(0.1)
         mouse.move(previous_position[0], previous_position[1])
         time.sleep(0.1)
@@ -121,7 +121,7 @@ class monkey:
         self.upgrades = upgrades
 
         # update information about tower
-        self.info(self.monkey_name)
+        # self.info(self.monkey_name)
 
     def sell(self):
 
@@ -140,7 +140,7 @@ class monkey:
         time.sleep(0.1)
         mouse.click()
         time.sleep(0.1)
-        keyboard.send("backspace")
+        keyboard.send(hotkeys["Gameplay"]["Pause/Deselect"])
         time.sleep(0.1)
         mouse.move(previous_position[0], previous_position[1])
         time.sleep(0.1)
@@ -201,3 +201,17 @@ class monkey:
         self.total_price_hard = price_round(1.08 * self.total_price_medium)
         self.total_price_impoppable = price_round(1.2 * self.total_price_medium)
 
+
+class hotkey:
+    def play(self):
+        keyboard.send(hotkeys["Gameplay"]["Play/Fast Forward"])
+
+    def change_targeting(targeting: str = "First"):
+        targeting_options = ["First", "Last", "Close", "Strong"]
+        targeting_change = targeting_options.index(targeting) - 0
+        for i in range(targeting_change):
+            keyboard.send(hotkeys["Monkeys"]["Change Targeting"][1])
+
+    def confirm():
+        keyboard.send("enter")
+        time.sleep(0.1)
