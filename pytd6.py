@@ -33,7 +33,10 @@ class monkey:
         if self.placed:
             raise MonkeyPlaced
 
-        self.hotkeys = {"monkeys": {"Dart Monkey": "q"}, "upgrades": [",", ".", "/"]}
+        self.hotkeys = {
+            "monkeys": {"Dart Monkey": "q"},
+            "upgrades": [",", ".", "?"],
+        }
 
         # activate Bloons TD 6 window.
         btd6_window = pygetwindow.getWindowsWithTitle("BloonsTD6")[0]
@@ -71,6 +74,15 @@ class monkey:
         if (type(upgrades) is not list) and (type(upgrades) is not tuple):
             raise UpgradeError
         if len(upgrades) != 3:
+            raise UpgradeError
+
+        # raise UpgradeError if all paths have tiers active.
+        if upgrades.count(0) == 0:
+            raise UpgradeError
+
+        # raise UpgradeError if there is more than one path at tier 3 or higher
+        third_tier_upgrade_count = len([i for i in upgrades if i >= 3])
+        if third_tier_upgrade_count > 1:
             raise UpgradeError
         # raise exceptions if the monkey hasn't been placed or has been already sold.
         if not self.placed:
