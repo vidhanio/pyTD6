@@ -1,9 +1,9 @@
-from pytd6 import monkey, hotkey
+from pytd6 import Monkey, Hotkey
 
-temple = monkey("Super Monkey")
-primary_sacrifice = monkey("Dart Monkey")
-military_sacrifice = monkey("Sniper Monkey")
-magic_sacrifice = monkey("Ninja Monkey")
+temple = Monkey("Super Monkey")
+primary_sacrifice = Monkey("Dart Monkey")
+military_sacrifice = Monkey("Sniper Monkey")
+magic_sacrifice = Monkey("Ninja Monkey")
 
 temple.place([1100, 520])
 temple.upgrade([0, 2, 0])
@@ -18,12 +18,12 @@ magic_sacrifice.place([1037, 709])
 magic_sacrifice.upgrade([0, 0, 5])
 
 temple.upgrade([4, 0, 2], skip_esc=True)
-hotkey.confirm()
+Hotkey.confirm()
 
-primary_sacrifice = monkey("Dart Monkey")
-military_sacrifice = monkey("Sniper Monkey")
-magic_sacrifice = monkey("Ninja Monkey")
-support_sacrifice = monkey("Spike Factory")
+primary_sacrifice = Monkey("Dart Monkey")
+military_sacrifice = Monkey("Sniper Monkey")
+magic_sacrifice = Monkey("Ninja Monkey")
+support_sacrifice = Monkey("Spike Factory")
 
 primary_sacrifice.place([1090, 365])
 primary_sacrifice.upgrade([0, 5, 0])
@@ -38,9 +38,9 @@ support_sacrifice.place([1170, 722])
 support_sacrifice.upgrade([0, 5, 0])
 
 temple.upgrade([5, 0, 2], skip_esc=True)
-hotkey.confirm()
+Hotkey.confirm()
 
-permanent_brew = monkey("Alchemist")
+permanent_brew = Monkey("Alchemist")
 permanent_brew.place([1309, 529])
 permanent_brew.upgrade([5, 0, 2])
 

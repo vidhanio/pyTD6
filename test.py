@@ -1,3 +1,3 @@
 import pytd6
 
-pytd6.monkey("Dart Monkey").place()
+pytd6.Monkey("Dart Monkey").place()

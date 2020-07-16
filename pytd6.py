@@ -18,28 +18,30 @@ def price_round(x, base=5):
     return base * round(x / base)
 
 
-class monkey:
+class Monkey:
     def __init__(self, monkey: str):
 
         # initialize monkey's attributes.
+        self.monkey_name = monkey
+        self.upgrades = [0, 0, 0]
+        self.targeting = "First"
+        self.targeting_options = ["First", "Last", "Close", "Strong"]
         self.sold = False
         self.placed = False
-        self.upgrades = [0, 0, 0]
-        self.monkey_name = monkey
 
-    # self.info(self.monkey_name)
+        # self.info(self.monkey_name)
 
     def place(self, coordinates: Tuple[int, int]):
+
+        # raise MonkeyPlaced if the monkey has already been placed.
+        if self.placed:
+            raise MonkeyPlaced
 
         # raise CoordinateError if invalid type or tuple length.
         if (type(coordinates) is not list) and (type(coordinates) is not tuple):
             raise CoordinateError
         if len(coordinates) != 2:
             raise CoordinateError
-
-        # raise MonkeyPlaced if the monkey has already been placed.
-        if self.placed:
-            raise MonkeyPlaced
 
         # activate Bloons TD 6 window.
         btd6_window = pygetwindow.getWindowsWithTitle("BloonsTD6")[0]
@@ -49,7 +51,6 @@ class monkey:
         # send the hotkey for the monkey
         # left click to place the monkey
         # time.sleep required for the monkey to be placed in time.
-        previous_position = mouse.get_position()
         mouse.move(coordinates[0], coordinates[1])
         time.sleep(0.1)
         keyboard.send(hotkeys["Monkeys"][self.monkey_name])
@@ -63,7 +64,36 @@ class monkey:
         # record that the monkey has been placed.
         self.placed = True
 
+    def select(self, coordinates: Tuple[int, int] = None):
+
+        # raise exceptions if the monkey hasn't been placed or has been already sold.
+        if not self.placed:
+            raise MonkeyNotPlaced
+        if self.sold:
+            raise MonkeySold
+
+        # if no coordinates are passed, sue the ones provided when the monkey was placed.
+        if coordinates is None:
+            coordinates = self.coordinates
+
+        # raise CoordinateError if invalid type or tuple length.
+        if (type(coordinates) is not list) and (type(coordinates) is not tuple):
+            raise CoordinateError
+        if len(coordinates) != 2:
+            raise CoordinateError
+
+        mouse.move(coordinates[0], coordinates[1])
+        time.sleep(0.1)
+        mouse.click()
+        time.sleep(0.1)
+
     def upgrade(self, upgrades: Tuple[int, int, int] = None, skip_esc: bool = False):
+
+        # raise exceptions if the monkey hasn't been placed or has been already sold.
+        if not self.placed:
+            raise MonkeyNotPlaced
+        if self.sold:
+            raise MonkeySold
 
         # if no upgrade path is passed, use the one provided when the monkey was generated.
         if upgrades is None:
@@ -88,32 +118,60 @@ class monkey:
         if third_tier_upgrade_count > 1:
             raise UpgradeError
 
-        # raise exceptions if the monkey hasn't been placed or has been already sold.
-        if not self.placed:
-            raise MonkeyNotPlaced
-        if self.sold:
-            raise MonkeySold
-
         # move to the monkey's position
         # send the hotkey for (current upgrade - previous upgrade)
         # send escape to get out of upgrade menu
-        mouse.move(self.coordinates[0], self.coordinates[1])
-        time.sleep(0.1)
-        mouse.click()
-        time.sleep(0.1)
+        self.select()
         for path in range(len(upgrades)):
             for tier in range(upgrades[path] - self.upgrades[path]):
                 keyboard.send(hotkeys["Monkeys"]["Upgrades"][path])
                 time.sleep(0.1)
         if not skip_esc:
             keyboard.send("esc")
-        time.sleep(0.1)
+            time.sleep(0.1)
 
         # record the upgrades of the monkey.
         self.upgrades = upgrades
 
         # update information about tower
         # self.info(self.monkey_name)
+
+    def target(self, targeting: str = None):
+
+        # if no targeting is passed, use the one provided when the monkey was generated.
+        if targeting == None:
+            targeting = self.targeting
+
+        # raise TargetingError if targeting not in targeting_options.
+        if targeting not in self.targeting_options:
+            raise TargetingError
+
+        # find difference between indexes of new targeting and old targeting
+        targeting_index_old = self.targeting_options.index(self.targeting)
+        targeting_index = self.targeting_options.index(targeting)
+        targeting_change = targeting_index - targeting_index_old
+
+        print("Targeting", targeting, "-", self.targeting, ":", targeting_change)
+        self.select()
+
+        # if new targeting index is lower than old one, use reverse targeting hotkey
+        if targeting_change <= 0:
+            for i in range(abs(targeting_change)):
+                keyboard.send(hotkeys["Monkeys"]["Change Targeting"][0])
+                time.sleep(0.1)
+
+        # if new targeting index is higher than old one, use normal targeting hotkey
+        else:
+            for i in range(targeting_change):
+                keyboard.send(hotkeys["Monkeys"]["Change Targeting"][1])
+                time.sleep(0.1)
+
+        # send escape to get out of upgrade menu
+        keyboard.send("esc")
+        time.sleep(0.1)
+
+        # record the targetting of the monkey.
+        self.targeting = targeting
 
     def sell(self):
 
@@ -125,10 +183,7 @@ class monkey:
 
         # move to the monkey's position
         # sell monkey
-        mouse.move(self.coordinates[0], self.coordinates[1])
-        time.sleep(0.1)
-        mouse.click()
-        time.sleep(0.1)
+        self.select()
         keyboard.send(hotkeys["Gameplay"]["Pause/Deselect"])
         time.sleep(0.1)
 
@@ -218,7 +273,7 @@ class monkey:
         self.total_price_impoppable = price_round(1.2 * self.total_price_medium)
 
 
-class hotkey:
+class Hotkey:
     def play(self):
         keyboard.send(hotkeys["Gameplay"]["Play/Fast Forward"])
 
@@ -230,4 +285,6 @@ class hotkey:
 
     def confirm():
         keyboard.send("enter")
+        time.sleep(0.1)
+        keyboard.send("esc")
         time.sleep(0.1)

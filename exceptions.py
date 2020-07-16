@@ -10,22 +10,29 @@ class BloonsTD6NotOpen(pyTD6Exception):
         super().__init__("Bloons TD 6 is not open.")
 
 
-class UpgradeError(pyTD6Exception):
+class MonkeyPlaced(pyTD6Exception):
     def __init__(self):
-        super().__init__("Invalid upgrades.")
+        super().__init__("The monkey has already been placed.")
+
+
+class MonkeyNotPlaced(pyTD6Exception):
+    def __init__(self):
+        super().__init__("The monkey has not been placed.")
 
 
 class CoordinateError(pyTD6Exception):
     def __init__(self):
         super().__init__("Invalid coordinates.")
 
-class MonkeyPlaced(pyTD6Exception):
-    def __init__(self):
-        super().__init__("The monkey has already been placed.")
 
-class MonkeyNotPlaced(pyTD6Exception):
+class UpgradeError(pyTD6Exception):
     def __init__(self):
-        super().__init__("The monkey has not been placed.")
+        super().__init__("Invalid upgrades.")
+
+
+class TargetingError(pyTD6Exception):
+    def __init__(self):
+        super().__init__("Invalid targeting.")
 
 
 class MonkeySold(pyTD6Exception):
