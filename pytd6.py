@@ -30,7 +30,7 @@ class Monkey:
         self.sold = False
         self.placed = False
 
-        # self.info(self.monkey_name)
+        self.info(self.monkey_name)
 
     def place(self, coordinates: Tuple[int, int]):
 
@@ -135,7 +135,7 @@ class Monkey:
         self.upgrades = upgrades
 
         # update information about tower
-        # self.info(self.monkey_name)
+        self.info(self.monkey_name)
 
     def target(self, targeting: str = None):
 
@@ -148,22 +148,29 @@ class Monkey:
             raise TargetingError
 
         # find difference between indexes of new targeting and old targeting
-        targeting_index_old = self.targeting_options.index(self.targeting)
-        targeting_index = self.targeting_options.index(targeting)
-        targeting_change = targeting_index - targeting_index_old
+        self.targeting_index_old = self.targeting_options.index(self.targeting)
+        self.targeting_index = self.targeting_options.index(targeting)
+        self.targeting_index_change = self.targeting_index - self.targeting_index_old
 
-        print("Targeting", targeting, "-", self.targeting, ":", targeting_change)
+        print(
+            "Targeting",
+            targeting,
+            "-",
+            self.targeting,
+            ":",
+            self.targeting_index_change,
+        )
         self.select()
 
         # if new targeting index is lower than old one, use reverse targeting hotkey
-        if targeting_change <= 0:
-            for i in range(abs(targeting_change)):
+        if self.targeting_index_change <= 0:
+            for i in range(abs(self.targeting_index_change)):
                 keyboard.send(hotkeys["Monkeys"]["Change Targeting"][0])
                 time.sleep(0.1)
 
         # if new targeting index is higher than old one, use normal targeting hotkey
         else:
-            for i in range(targeting_change):
+            for i in range(self.targeting_index_change):
                 keyboard.send(hotkeys["Monkeys"]["Change Targeting"][1])
                 time.sleep(0.1)
 
@@ -185,13 +192,21 @@ class Monkey:
         # move to the monkey's position
         # sell monkey
         self.select()
-        keyboard.send(hotkeys["Gameplay"]["Pause/Deselect"])
+        keyboard.send(hotkeys["Gameplay"]["Sell"])
         time.sleep(0.1)
 
         # record that the monkey has been sold.
         self.sold = True
 
     def info(self, monkey_name: str = None, upgrades: Tuple[int, int, int] = None):
+
+        # if no upgrade path is passed, use the one provided when the monkey was generated.
+        if upgrades == None:
+            upgrades = self.upgrades
+
+        # if no monkey name is passed, use the one provided when the monkey was generated.
+        if monkey_name == None:
+            monkey_name = self.monkey_name
 
         # raise UpgradeError if invalid type or tuple length.
         if (type(upgrades) is not list) and (type(upgrades) is not tuple):
@@ -212,17 +227,9 @@ class Monkey:
         if third_tier_upgrade_count > 1:
             raise UpgradeError
 
-        # if no upgrade path is passed, use the one provided when the monkey was generated.
-        if upgrades == None:
-            upgrades = self.upgrades
-
-        # if no monkey name is passed, use the one provided when the monkey was generated.
-        if monkey_name == None:
-            monkey_name = self.monkey_name
-
         # get main path from the 3, represented by highest tier.
-        main_tier = max(upgrades)
-        main_path = upgrades.index(main_tier)
+        self.main_tier = max(upgrades)
+        self.main_path = upgrades.index(self.main_tier)
 
         # set basic monkey data
         self.monkey_name = monkey_name
@@ -247,17 +254,17 @@ class Monkey:
         if upgrades != [0, 0, 0]:
 
             # get basic upgrade data from monkeys.json
-            self.upgrade_name = monkeys[monkey_name]["upgrades"][main_path][
-                main_tier - 1
+            self.upgrade_name = monkeys[monkey_name]["upgrades"][self.main_path][
+                self.main_tier - 1
             ]["name"]
-            self.upgrade_description = monkeys[monkey_name]["upgrades"][main_path][
-                main_tier - 1
+            self.upgrade_description = monkeys[monkey_name]["upgrades"][self.main_path][
+                self.main_tier - 1
             ]["description"]
 
             # calculate upgrade prices for different difficulties.
-            self.upgrade_price_medium = monkeys[monkey_name]["upgrades"][main_path][
-                main_tier - 1
-            ]["price"]
+            self.upgrade_price_medium = monkeys[monkey_name]["upgrades"][
+                self.main_path
+            ][self.main_tier - 1]["price"]
             self.upgrade_price_easy = price_round(0.85 * self.upgrade_price_medium)
             self.upgrade_price_hard = price_round(1.08 * self.upgrade_price_medium)
             self.upgrade_price_impoppable = price_round(1.2 * self.upgrade_price_medium)
@@ -272,6 +279,80 @@ class Monkey:
         self.total_price_easy = price_round(0.85 * self.total_price_medium)
         self.total_price_hard = price_round(1.08 * self.total_price_medium)
         self.total_price_impoppable = price_round(1.2 * self.total_price_medium)
+
+
+class Ability:
+    def __init__(
+        self,
+        monkey: Monkey,
+        hotkey_index: int,
+        ability_name: str = None,
+        upgrades: Tuple[int, int, int] = None,
+    ):
+
+        # initialize ability's attributes.
+        self.monkey_name = monkey.monkey_name
+        self.hotkey_index = hotkey_index
+        self.ability_name = ability_name
+
+        # if no upgrade path is passed, use the one provided when the monkey was generated.
+        if upgrades is None:
+            upgrades = monkey.upgrades
+
+        # raise AbilityError if the monkey's upgrade doesn't have an ability.
+        if (
+            "abilities"
+            not in monkeys[self.monkey_name]["upgrades"][monkey.main_path][
+                monkey.main_tier - 1
+            ]
+        ):
+            raise AbilityError
+
+        self.ability_list = monkeys[self.monkey_name]["upgrades"][monkey.main_path][
+            monkey.main_tier - 1
+        ]["abilities"]
+
+        # if ability_name isn't passed, default to the first ability that the monkey has.
+        # if it is, then find the index of it and set it to that.
+        if ability_name == None:
+            self.ability = self.ability_list[0]
+        else:
+            for ability_dict in self.ability_list:
+                if ability_dict["name"] == ability_name:
+                    self.ability = ability_dict
+
+    def activate(
+        self,
+        hotkey_index=None,
+        coordinates_1: Tuple[int, int] = None,
+        coordinates_2: Tuple[int, int] = None,
+    ):
+
+        # if no hotkey_index is passed, use the one provided when the ability was generated.
+        if hotkey_index == None:
+            hotkey_index = self.hotkey_index
+
+        if self.ability["type"] == 0:
+            keyboard.send(hotkeys["Gameplay"]["Activated Abilities"][hotkey_index - 1])
+            time.sleep(0.1)
+        elif self.ability["type"] == 1:
+            keyboard.send(hotkeys["Gameplay"]["Activated Abilities"][hotkey_index - 1])
+            time.sleep(0.1)
+            mouse.move(coordinates_1[0], coordinates_1[1])
+            time.sleep(0.1)
+            mouse.click()
+            time.sleep(0.1)
+        elif self.ability["type"] == 2:
+            keyboard.send(hotkeys["Gameplay"]["Activated Abilities"][hotkey_index - 1])
+            time.sleep(0.1)
+            mouse.move(coordinates_1[0], coordinates_2[1])
+            time.sleep(0.1)
+            mouse.click()
+            time.sleep(0.1)
+            mouse.move(coordinates_2[0], coordinates_2[1])
+            time.sleep(0.1)
+            mouse.click()
+            time.sleep(0.1)
 
 
 class Hotkey:

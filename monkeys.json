@@ -51,12 +51,26 @@
                 {
                     "name": "Super Monkey Fan Club",
                     "description": "Super Monkey Fan Club ability: Converts up to 10 nearby Dart Monkeys including himself into Super Monkeys for 15 seconds.",
-                    "price": 8000
+                    "price": 8000,
+                    "abilities": [
+                        {
+                            "name": "Super Monkey Fan Club",
+                            "cooldown": 50,
+                            "type": 0
+                        }
+                    ]
                 },
                 {
                     "name": "Plasma Monkey Fan Club",
                     "description": "Elite membership of this club grants the Dart Monkeys even more power!",
-                    "price": 50000
+                    "price": 50000,
+                    "abilities": [
+                        {
+                            "name": "Plasma Monkey Fan Club",
+                            "cooldown": 50,
+                            "type": 0
+                        }
+                    ]
                 }
             ],
             [

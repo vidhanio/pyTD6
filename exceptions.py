@@ -38,3 +38,8 @@ class TargetingError(pyTD6Exception):
 class MonkeySold(pyTD6Exception):
     def __init__(self):
         super().__init__("The monkey has been sold.")
+
+
+class AbilityError(pyTD6Exception):
+    def __init__(self):
+        super().__init__("Invalid ability.")
