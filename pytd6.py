@@ -21,6 +21,7 @@ def price_round(x, base=5):
 class Monkey:
     def __init__(self, monkey: str):
 
+        # DO NOT MODIFY THESE DIRECTLY - use appropriate provided functions instead
         # initialize monkey's attributes.
         self.monkey_name = monkey
         self.upgrades = [0, 0, 0]
