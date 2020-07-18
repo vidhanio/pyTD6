@@ -30,6 +30,7 @@ class Monkey:
         self.sold = False
         self.placed = False
 
+        # update information about monkey
         self.info(self.monkey_name)
 
     def place(self, coordinates: Tuple[int, int]):
@@ -134,13 +135,13 @@ class Monkey:
         # record the upgrades of the monkey.
         self.upgrades = upgrades
 
-        # update information about tower
+        # update information about monkey
         self.info(self.monkey_name)
 
     def target(self, targeting: str = None):
 
         # if no targeting is passed, use the one provided when the monkey was generated.
-        if targeting == None:
+        if targeting is None:
             targeting = self.targeting
 
         # raise TargetingError if targeting not in targeting_options.
@@ -201,11 +202,11 @@ class Monkey:
     def info(self, monkey_name: str = None, upgrades: Tuple[int, int, int] = None):
 
         # if no upgrade path is passed, use the one provided when the monkey was generated.
-        if upgrades == None:
+        if upgrades is None:
             upgrades = self.upgrades
 
         # if no monkey name is passed, use the one provided when the monkey was generated.
-        if monkey_name == None:
+        if monkey_name is None:
             monkey_name = self.monkey_name
 
         # raise UpgradeError if invalid type or tuple length.
@@ -308,18 +309,22 @@ class Ability:
         ):
             raise AbilityError
 
+        # set list of monkey's abilities in ability_list
         self.ability_list = monkeys[self.monkey_name]["upgrades"][monkey.main_path][
             monkey.main_tier - 1
         ]["abilities"]
 
         # if ability_name isn't passed, default to the first ability that the monkey has.
         # if it is, then find the index of it and set it to that.
-        if ability_name == None:
-            self.ability = self.ability_list[0]
+        if ability_name is None:
+            self.ability_dict = self.ability_list[0]
         else:
             for ability_dict in self.ability_list:
                 if ability_dict["name"] == ability_name:
-                    self.ability = ability_dict
+                    self.ability_dict = ability_dict
+
+        # update information about ability
+        self.info()
 
     def activate(
         self,
@@ -329,20 +334,28 @@ class Ability:
     ):
 
         # if no hotkey_index is passed, use the one provided when the ability was generated.
-        if hotkey_index == None:
+        if hotkey_index is None:
             hotkey_index = self.hotkey_index
 
-        if self.ability["type"] == 0:
+        # type 0 - just activate ability
+        # i.e. Super Monkey Fan Club
+        if self.ability_dict["type"] == 0:
             keyboard.send(hotkeys["Gameplay"]["Activated Abilities"][hotkey_index - 1])
             time.sleep(0.1)
-        elif self.ability["type"] == 1:
+
+        # type 1 - activate ability then click once.
+        # i.e. Overclock
+        elif self.ability_dict["type"] == 1:
             keyboard.send(hotkeys["Gameplay"]["Activated Abilities"][hotkey_index - 1])
             time.sleep(0.1)
             mouse.move(coordinates_1[0], coordinates_1[1])
             time.sleep(0.1)
             mouse.click()
             time.sleep(0.1)
-        elif self.ability["type"] == 2:
+
+        # type 2 - activate ability then click twice.
+        # i.e. Chinook Reposition
+        elif self.ability_dict["type"] == 2:
             keyboard.send(hotkeys["Gameplay"]["Activated Abilities"][hotkey_index - 1])
             time.sleep(0.1)
             mouse.move(coordinates_1[0], coordinates_2[1])
@@ -354,16 +367,21 @@ class Ability:
             mouse.click()
             time.sleep(0.1)
 
+    def info(self, ability_dict=None):
+
+        # if ability_dict is not provided, use the one provided when the ability was generated.
+        if ability_dict is None:
+            ability_dict = self.ability_dict
+
+        # turn ability dictionary values into attributes.
+        self.ability_name = ability_dict["name"]
+        self.ability_cooldown = ability_dict["cooldown"]
+        self.ability_type = ability_dict["type"]
+
 
 class Hotkey:
     def play(self):
         keyboard.send(hotkeys["Gameplay"]["Play/Fast Forward"])
-
-    def change_targeting(targeting: str = "First"):
-        targeting_options = ["First", "Last", "Close", "Strong"]
-        targeting_change = targeting_options.index(targeting) - 0
-        for i in range(targeting_change):
-            keyboard.send(hotkeys["Monkeys"]["Change Targeting"][1])
 
     def confirm():
         keyboard.send("enter")
