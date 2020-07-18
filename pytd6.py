@@ -31,7 +31,7 @@ class Monkey:
         self.placed = False
 
         # update information about monkey
-        self.info(self.monkey_name)
+        # self.info(self.monkey_name)
 
     def place(self, coordinates: Tuple[int, int]):
 
@@ -136,7 +136,7 @@ class Monkey:
         self.upgrades = upgrades
 
         # update information about monkey
-        self.info(self.monkey_name)
+        # self.info(self.monkey_name)
 
     def target(self, targeting: str = None):
 
