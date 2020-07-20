@@ -1,4 +1,4 @@
-import keyboard, mouse, json, pygetwindow, time, ctypes
+import keyboard, mouse, json, pygetwindow, pywinauto, time, ctypes
 from typing import Tuple
 from exceptions import *
 
@@ -13,7 +13,16 @@ with open("monkeys.json") as monkeys_json:
 with open("hotkeys.json") as hotkeys_json:
     hotkeys = json.load(hotkeys_json)
 
-# Used to round price to the nearest 5.
+# used to focus btd6 window without IPython error (https://github.com/asweigart/PyGetWindow/issues/16s)
+def focus_window(window_title=None):
+    window = pygetwindow.getWindowsWithTitle(window_title)[0]
+    if window.isActive == False:
+        pywinauto.application.Application().connect(
+            handle=window._hWnd
+        ).top_window().set_focus()
+
+
+# used to round price to the nearest 5.
 def price_round(x, base=5):
     return base * round(x / base)
 
@@ -46,8 +55,7 @@ class Monkey:
             raise CoordinateError
 
         # activate Bloons TD 6 window.
-        btd6_window = pygetwindow.getWindowsWithTitle("BloonsTD6")[0]
-        btd6_window.activate()
+        focus_window("BloonsTD6")
 
         # move to the monkey's position
         # send the hotkey for the monkey
