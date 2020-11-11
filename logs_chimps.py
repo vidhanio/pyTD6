@@ -5,9 +5,9 @@ from pytd6 import Monkey, Hero, get_cash
 
 druids = []
 for i in range(6):
-    druids.append(Monkey("Druid", 0.1))
+    druids.append(Monkey("Druid"))
 
-obyn = Hero("Obyn Greenfoot", 0.5)
+obyn = Hero("Obyn Greenfoot")
 
 village = Monkey("Monkey Village")
 

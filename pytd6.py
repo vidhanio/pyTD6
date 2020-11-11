@@ -113,7 +113,7 @@ def get_round():
 
 
 class Monkey:
-    def __init__(self, monkey: str, delay: int = 0.2):
+    def __init__(self, monkey: str, delay: int = 0.1):
 
         # initialize monkey's attributes.
         self.name = monkey
@@ -353,7 +353,7 @@ class Monkey:
 
 
 class Hero:
-    def __init__(self, hero: str, delay: int = 0.2):
+    def __init__(self, hero: str, delay: int = 0.1):
         self.name = hero
         self.delay = delay
         self.level = 0
@@ -718,11 +718,11 @@ class Ability:
 
 def play():
     keyboard.send(hotkeys["Gameplay"]["Play/Fast Forward"])
-    time.sleep(0.2)
+    time.sleep(0.1)
 
 
 def confirm():
     keyboard.send("enter")
-    time.sleep(0.2)
+    time.sleep(0.1)
     keyboard.send("esc")
-    time.sleep(0.2)
+    time.sleep(0.1)
