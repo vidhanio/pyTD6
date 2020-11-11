@@ -1,0 +1,227 @@
+{
+    "parse": {
+        "title": "Bomb Shooter",
+        "sections": [
+            {
+                "toclevel": 1,
+                "level": "3",
+                "line": "Bloons TD 1",
+                "number": "1",
+                "index": "1",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 3350,
+                "anchor": "Bloons_TD_1"
+            },
+            {
+                "toclevel": 2,
+                "level": "4",
+                "line": "Bigger Bombs",
+                "number": "1.1",
+                "index": "2",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 3380,
+                "anchor": "Bigger_Bombs"
+            },
+            {
+                "toclevel": 2,
+                "level": "4",
+                "line": "Extra Range Bombs",
+                "number": "1.2",
+                "index": "3",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 3417,
+                "anchor": "Extra_Range_Bombs"
+            },
+            {
+                "toclevel": 1,
+                "level": "3",
+                "line": "Bloons TD 2",
+                "number": "2",
+                "index": "4",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 3459,
+                "anchor": "Bloons_TD_2"
+            },
+            {
+                "toclevel": 2,
+                "level": "4",
+                "line": "Bigger Bombs",
+                "number": "2.1",
+                "index": "5",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 3622,
+                "anchor": "Bigger_Bombs_2"
+            },
+            {
+                "toclevel": 2,
+                "level": "4",
+                "line": "Extra Range Bombs",
+                "number": "2.2",
+                "index": "6",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 3688,
+                "anchor": "Extra_Range_Bombs_2"
+            },
+            {
+                "toclevel": 1,
+                "level": "3",
+                "line": "Bloons TD 3",
+                "number": "3",
+                "index": "7",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 3759,
+                "anchor": "Bloons_TD_3"
+            },
+            {
+                "toclevel": 1,
+                "level": "3",
+                "line": "Bloons TD 4",
+                "number": "4",
+                "index": "8",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 4950,
+                "anchor": "Bloons_TD_4"
+            },
+            {
+                "toclevel": 2,
+                "level": "4",
+                "line": "Frag Bombs",
+                "number": "4.1",
+                "index": "9",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 6483,
+                "anchor": "Frag_Bombs"
+            },
+            {
+                "toclevel": 1,
+                "level": "2",
+                "line": "Bloons TD 5",
+                "number": "5",
+                "index": "10",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 6645,
+                "anchor": "Bloons_TD_5"
+            },
+            {
+                "toclevel": 2,
+                "level": "3",
+                "line": "Path 1 Upgrades",
+                "number": "5.1",
+                "index": "11",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 6785,
+                "anchor": "Path_1_Upgrades"
+            },
+            {
+                "toclevel": 2,
+                "level": "3",
+                "line": "Path 2 Upgrades",
+                "number": "5.2",
+                "index": "12",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 9117,
+                "anchor": "Path_2_Upgrades"
+            },
+            {
+                "toclevel": 1,
+                "level": "2",
+                "line": "Bloons TD Battles",
+                "number": "6",
+                "index": "13",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 11581,
+                "anchor": "Bloons_TD_Battles"
+            },
+            {
+                "toclevel": 1,
+                "level": "2",
+                "line": "Differences Between BTD5 Flash and BTD5 Mobile",
+                "number": "7",
+                "index": "14",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 12090,
+                "anchor": "Differences_Between_BTD5_Flash_and_BTD5_Mobile"
+            },
+            {
+                "toclevel": 1,
+                "level": "2",
+                "line": "Update History (Bloons TD Battles Mobile)",
+                "number": "8",
+                "index": "15",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 12781,
+                "anchor": "Update_History_.28Bloons_TD_Battles_Mobile.29"
+            },
+            {
+                "toclevel": 1,
+                "level": "2",
+                "line": "Bloons Tower Defense 6",
+                "number": "9",
+                "index": "16",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 14062,
+                "anchor": "Bloons_Tower_Defense_6"
+            },
+            {
+                "toclevel": 2,
+                "level": "3",
+                "line": "Path 1",
+                "number": "9.1",
+                "index": "17",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 15770,
+                "anchor": "Path_1"
+            },
+            {
+                "toclevel": 2,
+                "level": "3",
+                "line": "Path 2",
+                "number": "9.2",
+                "index": "18",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 18558,
+                "anchor": "Path_2"
+            },
+            {
+                "toclevel": 2,
+                "level": "3",
+                "line": "Path 3",
+                "number": "9.3",
+                "index": "19",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 21356,
+                "anchor": "Path_3"
+            },
+            {
+                "toclevel": 2,
+                "level": "3",
+                "line": "Version History (BTD6)",
+                "number": "9.4",
+                "index": "20",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 24180,
+                "anchor": "Version_History_.28BTD6.29"
+            },
+            {
+                "toclevel": 1,
+                "level": "2",
+                "line": "Trivia",
+                "number": "10",
+                "index": "21",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 25619,
+                "anchor": "Trivia"
+            },
+            {
+                "toclevel": 1,
+                "level": "2",
+                "line": "Gallery",
+                "number": "11",
+                "index": "22",
+                "fromtitle": "Bomb_Shooter",
+                "byteoffset": 28866,
+                "anchor": "Gallery"
+            }
+        ]
+    }
+}

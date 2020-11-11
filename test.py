@@ -1,5 +1,7 @@
-from pytd6 import Monkey, Ability
+from pytd6 import Hero, Ability
 
-obyn = Monkey("Heroes")
-
-obyn.place([628, 550])
+obyn = Hero("Obyn Greenfoot")
+obyn.place([550, 680])
+obyn.set_level(3)
+brambles = Ability(obyn, 0)
+brambles.activate()

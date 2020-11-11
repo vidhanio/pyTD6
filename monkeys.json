@@ -24,12 +24,12 @@
                 {
                     "name": "Juggernaut",
                     "description": "Hurls a giant spiked ball that pops lead and excels at crushing Ceramic Bloons.",
-                    "price": 99999
+                    "price": 1800
                 },
                 {
                     "name": "Ultra-Juggernaut",
                     "description": "Gigantic spiked ball splits twice into 6 Juggernaut balls for even more destructive power.",
-                    "price": 1800
+                    "price": 15000
                 }
             ],
             [
@@ -98,6 +98,624 @@
                     "name": "Crossbow Master",
                     "description": "Crossbow Master shoots really fast and devastates most Bloon types with ease.",
                     "price": 25000
+                }
+            ]
+        ]
+    },
+    "Boomerang Monkey": {
+        "name": "Boomerang Monkey",
+        "description": "Hurls a boomerang that follows a curved path. Good range and pierce.",
+        "category": "Primary",
+        "price": 0,
+        "upgrades": [
+            [
+                {
+                    "name": "Improved Rangs",
+                    "description": "Can pop up to 8 Bloons per throw.",
+                    "price": 200
+                },
+                {
+                    "name": "Glaives",
+                    "description": "Throws sharper and faster glaives instead of boomerangs.",
+                    "price": 280
+                },
+                {
+                    "name": "Glaive Ricochet",
+                    "description": "Glaives will bounce from Bloon to Bloon automatically and aggressively.",
+                    "price": 1300
+                },
+                {
+                    "name": "M.O.A.R Glaives",
+                    "description": "Mulitple Object Advanced Ricochet greatly enhances the already extraordinary powers of the Glaive Ricochet Monkey.",
+                    "price": 3000
+                },
+                {
+                    "name": "Glaive Lord",
+                    "description": "Glaive Lord surrounds itself in 3 special glaives that shred anything that comes near.",
+                    "price": 40000
+                }
+            ],
+            [
+                {
+                    "name": "Faster Throwing",
+                    "description": "Throws 25% faster.",
+                    "price": 175
+                },
+                {
+                    "name": "Faster Rangs",
+                    "description": "Boomerangs travel around faster & attacks an aditional 25% faster",
+                    "price": 250
+                },
+                {
+                    "name": "Bionic Boomerang",
+                    "description": "Replaces arm with a strong bionic arm that can throw boomerangs extremely fast.",
+                    "price": 1600
+                },
+                {
+                    "name": "Turbo Charge",
+                    "description": "Turbo Charge Ability: Makes this Monkey attack incredibly fast for 10 seconds.",
+                    "price": 4000,
+                    "abilities": [
+                        {
+                            "name": "Turbo Charge",
+                            "cooldown": 45,
+                            "type": 0
+                        }
+                    ]
+                },
+                {
+                    "name": "Perma Charge",
+                    "description": "Perma Charge has a permanent super fast attack speed. Ability increases the lethality even more.",
+                    "price": 35000,
+                    "abilities": [
+                        {
+                            "name": "Turbo Charge",
+                            "cooldown": 40,
+                            "type": 0
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "name": "Long Range Rangs",
+                    "description": "Can throw boomerangs further than normal.",
+                    "price": 100
+                },
+                {
+                    "name": "Red Hot Rangs",
+                    "description": "Allows boomerangs to pop Frozen and Lead Bloons. Also pops 2 layers.",
+                    "price": 300
+                },
+                {
+                    "name": "Kylie Boomerang",
+                    "description": "Throws heavy Kylie boomerangs that follow a straight path instead of curved.",
+                    "price": 1300
+                },
+                {
+                    "name": "MOAB Press",
+                    "description": "Heavy Kylie boomerang hits MOAB-Class Bloons multiple times per throw and sometimes knocks them back a short way along the path.",
+                    "price": 1800
+                },
+                {
+                    "name": "MOAB Domination",
+                    "description": "Special knockback kylies trigger more often and do lots of extra damage.",
+                    "price": 60000
+                }
+            ]
+        ]
+    },
+    "Bomb Shooter": {
+        "name": "Bomb Shooter",
+        "description": "Launches a powerful bomb at the Bloons. Slow rate of fire but affects a radius around the explosion.",
+        "category": "Primary",
+        "price": 600,
+        "upgrades": [
+            [
+                {
+                    "name": "Bigger Bombs",
+                    "description": "Shoots larger bombs, they have a larger blast area and more popping power.",
+                    "price": 400
+                },
+                {
+                    "name": "Heavy Bombs",
+                    "description": "Heavy duty bombs can smash through 2 layers of Bloon at once.",
+                    "price": 800
+                },
+                {
+                    "name": "Really Big Bombs",
+                    "description": "Huge bombs blow up Bloons in a large area.",
+                    "price": 1200
+                },
+                {
+                    "name": "Bloon Impact",
+                    "description": "Explosions become so violent Bloons are stunned for a short time when they are hit.",
+                    "price": 3200
+                },
+                {
+                    "name": "Bloon Crush",
+                    "description": "Bloon shattering explosions do massive damage and can stun MOAB-Class Bloons.",
+                    "price": 55000
+                }
+            ],
+            [
+                {
+                    "name": "Faster Reload",
+                    "description": "Reloads 20% faster.",
+                    "price": 0
+                },
+                {
+                    "name": "Missile Launcher",
+                    "description": "Shoots missiles instead of bombs, missiles fly faster with longer range.",
+                    "price": 0
+                },
+                {
+                    "name": "MOAB Mauler",
+                    "description": "MOAB Maulers do much more damage to MOAB-Class Bloons.",
+                    "price": 0
+                },
+                {
+                    "name": "MOAB Assassin",
+                    "description": "Assassinate MOAB ability: Special missile flies out and does massive damage to MOAB-Class Bloons.",
+                    "price": 8000,
+                    "abilities": [
+                        {
+                            "name": "Assassinate MOAB",
+                            "cooldown": 30,
+                            "type": 0
+                        }
+                    ]
+                },
+                {
+                    "name": "MOAB Eliminator",
+                    "description": "Assassinate ability does 6x damage with a shorter cooldown.",
+                    "price": 0,
+                    "abilities": [
+                        {
+                            "name": "Assassinate MOAB",
+                            "cooldown": 10,
+                            "type": 0
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "name": "Extra Range",
+                    "description": "Increases attack range.",
+                    "price": 200
+                },
+                {
+                    "name": "Frag Bombs",
+                    "description": "Explosions throw out sharp fragments that can pop more Bloons including Black Bloons.",
+                    "price": 300
+                },
+                {
+                    "name": "Cluster Bombs",
+                    "description": "Throws out secondary bombs instead of sharp fragments every shot.",
+                    "price": 800
+                },
+                {
+                    "name": "Recursive Cluster",
+                    "description": "Every second shot the cluster bombs send out more cluster bombs for even more destruction.",
+                    "price": 2400
+                },
+                {
+                    "name": "Bomb Blitz",
+                    "description": "When a Bloon escapes, a Bomb Storm will destroy every Bloon on the screen below a ZOMG.",
+                    "price": 35000
+                }
+            ]
+        ]
+    },
+    "monkeyname": {
+        "name": "monkeyname",
+        "description": "monkeydesc",
+        "category": "monkeycategory",
+        "price": 0,
+        "upgrades": [
+            [
+                {
+                    "name": "upgrade100",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade200",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade300",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade400",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade500",
+                    "description": "upgradedesc",
+                    "price": 0
+                }
+            ],
+            [
+                {
+                    "name": "upgrade010",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade020",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade030",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade040",
+                    "description": "upgradedesc",
+                    "price": 0,
+                    "abilities": [
+                        {
+                            "name": "abilityname",
+                            "cooldown": 0,
+                            "type": 0
+                        }
+                    ]
+                },
+                {
+                    "name": "upgrade050",
+                    "description": "upgradedesc",
+                    "price": 0,
+                    "abilities": [
+                        {
+                            "name": "abilityname",
+                            "cooldown": 0,
+                            "type": 0
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "name": "upgrade001",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade002",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade003",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade004",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade005",
+                    "description": "upgradedesc",
+                    "price": 0
+                }
+            ]
+        ]
+    },
+    "monkeyname": {
+        "name": "monkeyname",
+        "description": "monkeydesc",
+        "category": "monkeycategory",
+        "price": 0,
+        "upgrades": [
+            [
+                {
+                    "name": "upgrade100",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade200",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade300",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade400",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade500",
+                    "description": "upgradedesc",
+                    "price": 0
+                }
+            ],
+            [
+                {
+                    "name": "upgrade010",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade020",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade030",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade040",
+                    "description": "upgradedesc",
+                    "price": 8000,
+                    "abilities": [
+                        {
+                            "name": "abilityname",
+                            "cooldown": 0,
+                            "type": 0
+                        }
+                    ]
+                },
+                {
+                    "name": "upgrade050",
+                    "description": "upgradedesc",
+                    "price": 0,
+                    "abilities": [
+                        {
+                            "name": "abilityname",
+                            "cooldown": 0,
+                            "type": 0
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "name": "upgrade001",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade002",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade003",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade004",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade005",
+                    "description": "upgradedesc",
+                    "price": 0
+                }
+            ]
+        ]
+    },
+    "monkeyname": {
+        "name": "monkeyname",
+        "description": "monkeydesc",
+        "category": "monkeycategory",
+        "price": 0,
+        "upgrades": [
+            [
+                {
+                    "name": "upgrade100",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade200",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade300",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade400",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade500",
+                    "description": "upgradedesc",
+                    "price": 0
+                }
+            ],
+            [
+                {
+                    "name": "upgrade010",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade020",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade030",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade040",
+                    "description": "upgradedesc",
+                    "price": 8000,
+                    "abilities": [
+                        {
+                            "name": "abilityname",
+                            "cooldown": 0,
+                            "type": 0
+                        }
+                    ]
+                },
+                {
+                    "name": "upgrade050",
+                    "description": "upgradedesc",
+                    "price": 0,
+                    "abilities": [
+                        {
+                            "name": "abilityname",
+                            "cooldown": 0,
+                            "type": 0
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "name": "upgrade001",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade002",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade003",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade004",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade005",
+                    "description": "upgradedesc",
+                    "price": 0
+                }
+            ]
+        ]
+    },
+    "monkeyname": {
+        "name": "monkeyname",
+        "description": "monkeydesc",
+        "category": "monkeycategory",
+        "price": 0,
+        "upgrades": [
+            [
+                {
+                    "name": "upgrade100",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade200",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade300",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade400",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade500",
+                    "description": "upgradedesc",
+                    "price": 0
+                }
+            ],
+            [
+                {
+                    "name": "upgrade010",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade020",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade030",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade040",
+                    "description": "upgradedesc",
+                    "price": 8000,
+                    "abilities": [
+                        {
+                            "name": "abilityname",
+                            "cooldown": 0,
+                            "type": 0
+                        }
+                    ]
+                },
+                {
+                    "name": "upgrade050",
+                    "description": "upgradedesc",
+                    "price": 0,
+                    "abilities": [
+                        {
+                            "name": "abilityname",
+                            "cooldown": 0,
+                            "type": 0
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "name": "upgrade001",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade002",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade003",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade004",
+                    "description": "upgradedesc",
+                    "price": 0
+                },
+                {
+                    "name": "upgrade005",
+                    "description": "upgradedesc",
+                    "price": 0
                 }
             ]
         ]

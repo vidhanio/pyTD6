@@ -1,0 +1,250 @@
+{
+    "Obyn Greenfoot": {
+        "name": "Obyn Greenfoot",
+        "description": "Commanding powers of nature, Obyn can shoot through solid obstacles with his spirit wolf attack.",
+        "price": 650,
+        "levels": [
+            {
+                "description": "Shoots a homing spirit wolf that pierces 4 bloons and goes through solid objects."
+            },
+            {
+                "description": "Nature's Wrath: All Druids in range get +1 pierce."
+            },
+            {
+                "description": "Unlocks Brambles.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Every 18 seconds, Obyn creates a nature totem that slows down all bloons in its range by 30%.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Increased attack speed.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Increased popping power.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Brambles can pop 100 bloons.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Nature's ward totems slow down bloons by 40%.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Attack pops 2 extra layers.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Unlocks Wall of Trees.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    },
+                    {
+                        "name": "Wall of Trees",
+                        "cooldown": "30",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Nature's Clarity — all Magic Monkeys in range get an additional +5 range and +2 pierce (total of +3 for Druids)",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    },
+                    {
+                        "name": "Wall of Trees",
+                        "cooldown": "30",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Increased attack speed.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    },
+                    {
+                        "name": "Wall of Trees",
+                        "cooldown": "30",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Increased popping power.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    },
+                    {
+                        "name": "Wall of Trees",
+                        "cooldown": "30",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Attack pops extra layers.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    },
+                    {
+                        "name": "Wall of Trees",
+                        "cooldown": "30",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Nature's Ward slows Bloons by 60%, and has reduced cooldown.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    },
+                    {
+                        "name": "Wall of Trees",
+                        "cooldown": "30",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Brambles pop 500 Bloons each and can pop any bloon type.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    },
+                    {
+                        "name": "Wall of Trees",
+                        "cooldown": "30",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Increased attack speed.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    },
+                    {
+                        "name": "Wall of Trees",
+                        "cooldown": "30",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Improved Wrath — all Druid of Wrath pops start each round at 200.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    },
+                    {
+                        "name": "Wall of Trees",
+                        "cooldown": "30",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Attack pops extra layers.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    },
+                    {
+                        "name": "Wall of Trees",
+                        "cooldown": "30",
+                        "type": 0
+                    }
+                ]
+            },
+            {
+                "description": "Wall of Trees can hold a lot more Bloons.",
+                "abilities": [
+                    {
+                        "name": "Brambles",
+                        "cooldown": "10",
+                        "type": 0
+                    },
+                    {
+                        "name": "Wall of Trees",
+                        "cooldown": "30",
+                        "type": 0
+                    }
+                ]
+            }
+        ]
+    }
+}
