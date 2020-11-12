@@ -47,8 +47,6 @@ def get_health():
     # convert it to a pure black and white binary image, to increase contrast and readability.
     fn = lambda x: 255 if x > 10 else 0
     health_image = health_image.convert("L").point(fn, mode="1")
-    # save the image for debug purposes.
-    health_image.save("health.png")
     # convert it to a string, with only specified characters allowed.
     health_text = pytesseract.image_to_string(
         health_image, config="-c tessedit_char_whitelist=0123456789 --psm 6",
@@ -72,8 +70,6 @@ def get_cash():
     # convert it to a pure black and white binary image, to increase contrast and readability.
     fn = lambda x: 255 if x > 10 else 0
     cash_image = cash_image.convert("L").point(fn, mode="1")
-    # save the image for debug purposes.
-    cash_image.save("cash.png")
     # convert it to a string, with only specified characters allowed.
     cash_text = pytesseract.image_to_string(
         cash_image, config="-c tessedit_char_whitelist=$0123456789 --psm 6",
@@ -97,8 +93,6 @@ def get_round():
     # convert it to a pure black and white binary image, to increase contrast and readability.
     fn = lambda x: 255 if x > 10 else 0
     round_image = round_image.convert("L").point(fn, mode="1")
-    # save the image for debug purposes.
-    round_image.save("round.png")
     # convert it to a string, with only specified characters allowed.
     round_text = pytesseract.image_to_string(
         round_image, config="-c tessedit_char_whitelist=/0123456789 --psm 6",
