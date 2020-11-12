@@ -1,4 +1,0 @@
-keyboard
-mouse
-PyGetWindow
-pywinauto

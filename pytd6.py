@@ -66,7 +66,7 @@ def get_cash():
     # focus BTD6.
     focus_window("BloonsTD6")
     # take a screenshot of the cash.
-    cash_image = (pyautogui.screenshot(region=[320, 20, 240, 40]),)
+    cash_image = pyautogui.screenshot(region=[320, 20, 240, 40])
     # invert the image, as pytesseract does better with black text.
     cash_image = ImageChops.invert(cash_image)
     # convert it to a pure black and white binary image, to increase contrast and readability.
@@ -422,7 +422,6 @@ class Hero:
         self.level = level
 
     def upgrade(self, level: int = 1, skip_esc: bool = False):
-
         # raise exceptions if the monkey hasn't been placed or has been already sold.
         if not self.placed:
             raise MonkeyNotPlaced
@@ -443,7 +442,7 @@ class Hero:
         # send the hotkey for (current level - previous level)
         # send escape to get out of upgrade menu
         self.select()
-        for level in range(level - self.level):
+        for l in range(level - self.level):
             keyboard.send(hotkeys["Monkeys"]["Upgrades"][0])
             time.sleep(self.delay)
         if not skip_esc:

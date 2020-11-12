@@ -45,13 +45,11 @@ obyn.set_level(3)
 brambles = pytd6.Ability(obyn, 1)
 
 while pytd6.get_round()[0] != 24:
-    print(pytd6.get_round())
     time.sleep(1)
 
 brambles.activate()
 
 while pytd6.get_round()[0] != 33:
-    print(pytd6.get_round())
     time.sleep(1)
 
 
@@ -153,8 +151,6 @@ alchemists[1].upgrade([4, 0, 1])
 
 while get_cash() < 48600:
     time.sleep(1)
-
-print(get_cash())
 
 druids[5].upgrade([0, 1, 5])
 
